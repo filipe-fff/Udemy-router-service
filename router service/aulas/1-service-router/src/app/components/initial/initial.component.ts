@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-initial',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './initial.component.scss'
 })
 export class InitialComponent {
-
+  @Input() isActive: boolean = false;
+  @Input() isAdmin: boolean = false;
 }
