@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-cards',
@@ -9,5 +9,16 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './cards.component.scss'
 })
 export class CardsComponent {
+  private readonly _router = inject(Router);
+  private readonly _activatedRoute = inject(ActivatedRoute);
+
+
+  redirectToDebit() {
+    this._router.navigate(["debit"], { relativeTo:  this._activatedRoute});
+  }
+
+  redirectToCredit() {
+    this._router.navigate(["credit"], { relativeTo: this._activatedRoute });
+  }
 
 }
