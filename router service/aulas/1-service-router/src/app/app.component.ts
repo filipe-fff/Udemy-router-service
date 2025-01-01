@@ -12,11 +12,16 @@ export class AppComponent {
   private readonly _router = inject(Router);
 
   navegationToInitial() {
-    this._router.navigate(["initial"], { queryParams: { "isActive": true, "isAdmin": false } });
+    this._router.navigate(["initial"], { 
+      queryParams: { "isActive": true, "isAdmin": false }
+    });
   }
 
   navegationToContacts() {
-    this._router.navigate(["contacts"]);
+    this._router.navigate(["contacts"], {
+      queryParams: { id: 2, name: "Filipe" },
+      queryParamsHandling: "preserve"
+    });
   }
 
   navegationToInformations() {
@@ -24,6 +29,8 @@ export class AppComponent {
   }
 
   navegationToCards() {
-    this._router.navigate(["cards"]);
+    this._router.navigate(["cards"], {
+      queryParams: { id: 3, name: "Filipe" }
+    });
   }
 }
