@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,21 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = '1-service-router';
+  private readonly _router = inject(Router);
+
+  navegationToInitial() {
+    this._router.navigate(["initial"]);
+  }
+
+  navegationToContacts() {
+    this._router.navigate(["contacts"]);
+  }
+
+  navegationToInformations() {
+    this._router.navigate(["informations"]);
+  }
+
+  navegationToCards() {
+    this._router.navigate(["cards"]);
+  }
 }
