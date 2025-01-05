@@ -1,7 +1,16 @@
-<div class="menu" style="margin: 10px;">
+<!-- <div class="menu" style="margin: 10px;">
     <div class="menu__item">
         <a class="menu__link" (click)="redirectToDebit()">
             Débito
         </a>
     </div>
-</div>
+</div> -->
+
+<h1>Cartões de Crédito:</h1>
+
+@for(card of cardsList$ | async; track card) {
+    <div style="padding: 12px 0px; cursor: pointer;" (click)="onCardCreditById(card.id)">
+        <div style="padding: 4px;">Id: {{ card.id }}</div>
+        <div style="padding: 4px;">Número: {{ card.numero }}</div>
+    </div>
+}

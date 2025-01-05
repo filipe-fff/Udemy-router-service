@@ -1,6 +1,7 @@
 import { Routes } from "@angular/router";
 import { CreditComponent } from "./components/credit/credit.component";
 import { DebitComponent } from "./components/debit/debit.component";
+import { CardComponent } from "./components/card/card.component";
 
 export const CardsRoutes: Routes = [
     {
@@ -21,6 +22,11 @@ export const CardsRoutes: Routes = [
                 path: "debit",
                 title: "Débito",
                 component: DebitComponent
+            },
+            {
+                path: ":cardId",
+                title: "Cartão",
+                component: CardComponent
             }
         ]
     }
