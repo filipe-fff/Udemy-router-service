@@ -9,8 +9,8 @@ import { map, Observable } from "rxjs";
 export class AuthService {
     private readonly _httpClient = inject(HttpClient);
 
-    login(userName: string, password: string): Observable<{ token: string }> {
-       return this._httpClient.post<{ token: string }>("http://localhost:3000/login", { userName, password }).pipe(
+    login(username: string, password: string): Observable<{ token: string; }> {
+       return this._httpClient.post<{ token: string; }>("http://localhost:3000/login", { username, password }).pipe(
         map(resp => {
             localStorage.setItem("access-token", resp.token);
 

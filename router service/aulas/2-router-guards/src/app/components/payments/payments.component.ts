@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { DebitComponent } from '../debit/debit.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-payments',
   standalone: true,
-  imports: [ DebitComponent ],
+  imports: [ RouterOutlet ],
   templateUrl: './payments.component.html',
   styleUrl: './payments.component.scss'
 })
