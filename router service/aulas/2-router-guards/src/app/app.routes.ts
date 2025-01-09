@@ -9,6 +9,7 @@ import { CreditComponent } from './components/credit/credit.component';
 import { DebitComponent } from './components/debit/debit.component';
 import { authGuard } from './guards/auth.guard';
 import { scopesGuard } from './guards/scopes.guard';
+import { authWithScopesGuard } from './guards/auth-with-scopes';
 
 export const routes: Routes = [
     { path: "", pathMatch: "full", redirectTo: "/login" },
@@ -16,7 +17,8 @@ export const routes: Routes = [
     { 
         path: "dashboard",
         component: DashboardComponent,
-        canActivate: [authGuard(), scopesGuard("dashboard")],
+        canActivate: [authWithScopesGuard("dashboard")],
+        canActivateChild: [authGuard()],
         children: [
             { path: "", pathMatch: "full", redirectTo: "general" },
             { path: "general", title: "Geral", component: GeneralComponent },
