@@ -8,6 +8,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { CreditComponent } from './components/credit/credit.component';
 import { DebitComponent } from './components/debit/debit.component';
 import { authGuard } from './guards/auth.guard';
+import { scopesGuard } from './guards/scopes.guard';
 
 export const routes: Routes = [
     { path: "", pathMatch: "full", redirectTo: "/login" },
@@ -15,20 +16,21 @@ export const routes: Routes = [
     { 
         path: "dashboard",
         component: DashboardComponent,
-        canActivate: [authGuard()],
+        canActivate: [authGuard(), scopesGuard("dashboard")],
         children: [
             { path: "", pathMatch: "full", redirectTo: "general" },
             { path: "general", title: "Geral", component: GeneralComponent },
             {
                 path: "payments",
                 component: PaymentsComponent,
+                canActivate: [scopesGuard("pagamentos")],
                 title: "Pagamentos",
                 children: [
                     { path: "credit", title: "Crédito", component: CreditComponent },
                     { path: "debit", title: "Debito", component: DebitComponent }
                 ]
             },
-            { path: "admin", title: "Administrador", component: AdminComponent }
+            { path: "admin", title: "Administrador", component: AdminComponent, canActivate: [scopesGuard("admin")] }
         ]
     },
     { path: "not-authorized", title: "Not Authorized", component: NotAuthorizedComponent, data: { type: "not-authorized" } },
