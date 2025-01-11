@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Data, RouterLink } from '@angular/router';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-not-authorized',
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe, RouterLink],
   templateUrl: './not-authorized.component.html',
   styleUrl: './not-authorized.component.scss'
 })
-export class NotAuthorizedComponent {
+export class NotAuthorizedComponent implements OnInit {
+  data$: Observable<Data> = of({} as Data);
 
+  private readonly _activatedRoute = inject(ActivatedRoute);
+
+  ngOnInit() {
+      this.data$ = this._activatedRoute.data;
+  }
 }

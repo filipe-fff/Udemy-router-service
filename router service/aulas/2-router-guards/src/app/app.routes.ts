@@ -36,5 +36,6 @@ export const routes: Routes = [
         ]
     },
     { path: "not-authorized", title: "Not Authorized", component: NotAuthorizedComponent, data: { type: "not-authorized" } },
-    { path: "not-found", title: "Not Found", component: NotAuthorizedComponent, data: { type: "not-found" } }
+    { path: "not-found", title: "Not Found", component: NotAuthorizedComponent, data: { type: "not-found" } },
+    { path: "**", pathMatch: "full", redirectTo: "not-found" }
 ];

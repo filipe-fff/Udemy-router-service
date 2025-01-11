@@ -3,17 +3,17 @@
         <div class="dashboard__side-menu">
             <div class="dashboard__menu-item">
                 <span class="material-symbols-outlined dashboard__menu-icon">dashboard</span>
-                <span class="poppins-regular dashboard__menu-text">Início</span>
+                <span class="poppins-regular dashboard__menu-text" routerLink="/dashboard/general">Início</span>
             </div>
-            <div class="dashboard__menu-item" routerLink="payments">
+            <div class="dashboard__menu-item" routerLink="payments" routerLink="/dashboard/payments">
                 <span class="material-symbols-outlined dashboard__menu-icon">receipt_long</span>
                 <span class="poppins-regular dashboard__menu-text">Pagamentos</span>
             </div>
-            <div class="dashboard__menu-item" routerLink="admin">
+            <div class="dashboard__menu-item" routerLink="admin" routerLink="/dashboard/admin">
                 <span class="material-symbols-outlined dashboard__menu-icon">admin_panel_settings</span>
                 <span class="poppins-regular dashboard__menu-text">Área de Admin</span>
             </div>
-            <div class="dashboard__menu-item">
+            <div class="dashboard__menu-item" routerLink="/">
                 <span class="material-symbols-outlined dashboard__menu-icon">logout</span>
                 <span class="poppins-regular dashboard__menu-text">Sair</span>
             </div>
