@@ -34,4 +34,14 @@ export class AuthService {
 
         return decoded.scopes;
     }
+
+    getUserWalletStatus(): string {
+        const token = localStorage.getItem("access-token");
+
+        if (!token) return "";
+
+        const decoded: any = jwtDecode(token);
+
+        return decoded.walletStatus;
+    }
 }

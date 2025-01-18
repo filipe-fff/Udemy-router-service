@@ -10,6 +10,7 @@ import { DebitComponent } from './components/debit/debit.component';
 import { authGuard } from './guards/auth.guard';
 import { scopesGuard } from './guards/scopes.guard';
 import { authWithScopesGuard } from './guards/auth-with-scopes';
+import { walletGuard } from './guards/wallet.guard';
 
 export const routes: Routes = [
     { path: "", pathMatch: "full", redirectTo: "/login" },
@@ -26,6 +27,7 @@ export const routes: Routes = [
                 path: "payments",
                 component: PaymentsComponent,
                 canActivate: [scopesGuard("pagamentos")],
+                canActivateChild: [walletGuard()],
                 title: "Pagamentos",
                 children: [
                     { path: "credit", title: "Crédito", component: CreditComponent },
