@@ -10,14 +10,20 @@ import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/route
 })
 export class PaymentsComponent {
   isWalletBlocked: boolean = false;
-  private readonly router = inject(Router);
-  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly _router = inject(Router);
+  private readonly _activatedRoute = inject(ActivatedRoute);
 
   navigate(path: string) {
-    this.router.navigate([path], { relativeTo:  this.activatedRoute}).then((success) => {
+    this._router.navigate([path], { relativeTo:  this._activatedRoute}).then((success) => {
       console.log(success);
       if (success === null) return;
-      this.isWalletBlocked = !success;
+      
+      if (success) {
+        this.isWalletBlocked = false;
+      } else {
+        this._router.navigate(["dashboard/payments"]);
+        this.isWalletBlocked = true;
+      }
     });
   }
 }
