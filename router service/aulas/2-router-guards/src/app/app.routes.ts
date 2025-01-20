@@ -12,6 +12,7 @@ import { scopesGuard } from './guards/scopes.guard';
 import { authWithScopesGuard } from './guards/auth-with-scopes';
 import { walletGuard } from './guards/wallet.guard';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { generalInfosResolver } from './resolvers/general-infos.resolver';
 
 export const routes: Routes = [
     { path: "", pathMatch: "full", redirectTo: "/login" },
@@ -23,7 +24,14 @@ export const routes: Routes = [
         canActivateChild: [authGuard()],
         children: [
             { path: "", pathMatch: "full", redirectTo: "general" },
-            { path: "general", title: "Geral", component: GeneralComponent },
+            {
+                path: "general",
+                title: "Geral",
+                component: GeneralComponent,
+                resolve: {
+                    generalInfos: generalInfosResolver
+                }
+            },
             {
                 path: "payments",
                 component: PaymentsComponent,

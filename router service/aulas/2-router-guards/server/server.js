@@ -70,6 +70,22 @@ app.get('/verify-token', authenticateToken, (req, res) => {
   res.json({ valid: true, user: req.user });
 });
 
+app.get('/incidents', authenticateToken, (req, res) => {
+  res.json({ day: 1 });
+});
+
+app.get('/pending-payments', authenticateToken, (req, res) => {
+  res.json({ pending: 3 });
+});
+
+app.get('/new-accounts', authenticateToken, (req, res) => {
+  res.json({ accounts: 100 });
+});
+
+app.get('/active-users', authenticateToken, (req, res) => {
+  res.json({ users: 10000 });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
